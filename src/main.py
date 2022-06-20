@@ -30,7 +30,7 @@ pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Tower Defense Game")
 clock = pygame.time.Clock()
-
+player = pygame.Rect((20,20),(10,10))
 
 # Main Game Loop
 running = True
@@ -52,3 +52,4 @@ while running:
 
     # Draw / Render
     screen.fill(BLACK)
+    pygame.draw.rect(screen,RED,player)
