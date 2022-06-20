@@ -11,18 +11,15 @@
 # Imports Needed
 import pygame
 import random
+import tilemap
+from constants import *
 
 # Constant Variables
 WIDTH = 640
 HEIGHT = 360
 FPS = 30
 
-# Colors
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
+
 
 # Initializing Pygame and Window
 pygame.init()
@@ -30,11 +27,14 @@ pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Tower Defense Game")
 clock = pygame.time.Clock()
-player = pygame.Rect((20,20),(10,10))
 
-# Main Game Loop
-running = True
-while running:
+# Player
+speed = 3
+player_x, player_y = 20, 20
+player = pygame.Rect((player_x,player_y),(10,10))
+
+def ProcessInput():
+    global running
 
     # Process input (events)
     for event in pygame.event.get():
@@ -43,8 +43,22 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-        # Checking key presses
-        keys = pygame.key.get_pressed()
+    # Checking key presses
+    keys = pygame.key.get_pressed()
+    
+    if keys[pygame.K_a]:
+        player.x -= speed
+    if keys[pygame.K_d]:
+        player.x += speed
+    if keys[pygame.K_s]:
+        player.y += speed
+    if keys[pygame.K_w]:
+        player.y -= speed
+
+# Main Game Loop
+running = True
+while running:
+    ProcessInput()
     
     # Update
     pygame.display.update()
@@ -52,4 +66,12 @@ while running:
 
     # Draw / Render
     screen.fill(BLACK)
+    
+    for row in range( len(tilemap.tilemap) ):
+
+        for column in range( len(tilemap.tilemap[row]) ):
+
+            screen.blit(tilemap.textures[tilemap.tilemap[row][column]],
+                    (column*tilemap.tilesize, row*tilemap.tilesize))
+
     pygame.draw.rect(screen,RED,player)
