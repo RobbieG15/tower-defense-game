@@ -3,7 +3,7 @@
 @ Author: Anthony Ruffing
 @ Author: Joshua Stanley
 @
-@ Title: Pygame Template 
+@ Title: Tower Defense Game
 @
 @ Date: June 28, 2021
 """
@@ -13,13 +13,6 @@ import pygame
 import random
 import tilemap
 from constants import *
-
-# Constant Variables
-WIDTH = 640
-HEIGHT = 360
-FPS = 30
-
-
 
 # Initializing Pygame and Window
 pygame.init()
@@ -42,7 +35,17 @@ def ProcessInput():
         # Check for closing window
         if event.type == pygame.QUIT:
             running = False
-
+        # Mouse click
+        elif event.type == pygame.MOUSEBUTTONUP:
+            # Use floor division to get the indices of the tile.
+            x = event.pos[0] // TILESIZE
+            y = event.pos[1] // TILESIZE
+            print(event.pos, x, y)
+            if event.button == 1: # Left mouse button
+                tilemap.tilemap[y][x] = RED
+            if event.button == 3: # Right mouse button
+                tilemap.tilemap[y][x] = BLUE
+                
     # Checking key presses
     keys = pygame.key.get_pressed()
     
@@ -65,13 +68,12 @@ while running:
     clock.tick(FPS)
 
     # Draw / Render
-    screen.fill(BLACK)
+    screen.fill(BLACK_COLOR)
     
+    # Tilemap drawing every frame
     for row in range( len(tilemap.tilemap) ):
-
         for column in range( len(tilemap.tilemap[row]) ):
-
             screen.blit(tilemap.textures[tilemap.tilemap[row][column]],
-                    (column*tilemap.tilesize, row*tilemap.tilesize))
+                    (column*TILESIZE, row*TILESIZE))
 
-    pygame.draw.rect(screen,RED,player)
+    pygame.draw.rect(screen,RED_COLOR,player)
