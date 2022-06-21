@@ -1,7 +1,7 @@
 """
 @ Author: Robert Greenslade
-@ Author: Anthony Ruffing
-@ Author: Joshua Stanley
+@ Author: Anthony Ruffing 
+@ Author: Joshua Stanley 
 @
 @ Title: Tower Defense Game
 @
@@ -40,14 +40,16 @@ def ProcessInput():
             # Use floor division to get the indices of the tile.
             x = event.pos[0] // TILESIZE
             y = event.pos[1] // TILESIZE
-            print(event.pos, x, y)
-            if event.button == 1: # Left mouse button
-                tilemap.tilemap[y][x] = RED
-            if event.button == 3: # Right mouse button
-                tilemap.tilemap[y][x] = BLUE
-                
-    # Checking key presses
-    keys = pygame.key.get_pressed()
+
+            no_list = [[14,15,16],[10,11,12]]
+            if x not in no_list[0] or y not in no_list[1]: 
+                if event.button == 1: # Left mouse button 
+                    tilemap.tilemap[y][x] = RED
+                if event.button == 3: # Right mouse button 
+                    tilemap.tilemap[y][x] = BLUE 
+   
+    # Checking key pressed
+    keys = pygame.key.get_pressed() 
     
     if keys[pygame.K_a]:
         player.x -= speed

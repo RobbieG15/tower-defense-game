@@ -16,11 +16,11 @@ GREEN_COLOR = (0, 255, 0)
 BLUE_COLOR = (0, 0, 255)
 
 # Pygame Window
-WIDTH = 512
-HEIGHT = 512
-FPS = 30
+WIDTH = 32*32
+HEIGHT = 32*24 
+FPS = 30 
 
-# Tilemap
+# Tilemap 
 TILESIZE = 32
 BLUE = 0
 RED = 1
