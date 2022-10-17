@@ -18,10 +18,19 @@ blue_surface = pygame.Surface((32,32))
 blue_surface.fill(constants.BLUE_COLOR)
 red_surface = pygame.Surface((32,32))
 red_surface.fill(constants.RED_COLOR)
+green_surface = pygame.Surface((32,32))
+green_surface.fill(constants.GREEN_COLOR)
+white_surface = pygame.Surface((32,32))
+white_surface.fill(constants.WHITE_COLOR)
+black_surface = pygame.Surface((32,32))
+black_surface.fill(constants.BLACK_COLOR)
 
 textures = {
     BLUE : blue_surface,
-    RED : red_surface
+    RED : red_surface,
+    GREEN : green_surface,
+    WHITE : white_surface,
+    BLACK : black_surface
 }
 
 # Full default tilemap 

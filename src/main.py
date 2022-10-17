@@ -25,9 +25,11 @@ clock = pygame.time.Clock()
 speed = 3
 player_x, player_y = 20, 20
 player = pygame.Rect((player_x,player_y),(10,10))
+curColor = RED
 
 def ProcessInput():
     global running
+    global curColor
 
     # Process input (events)
     for event in pygame.event.get():
@@ -35,6 +37,20 @@ def ProcessInput():
         # Check for closing window
         if event.type == pygame.QUIT:
             running = False
+
+        # Check for color switch
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_1:
+                curColor = RED
+            elif event.key == pygame.K_2:
+                curColor = BLUE
+            elif event.key == pygame.K_3:
+                curColor = GREEN
+            elif event.key == pygame.K_4:
+                curColor = WHITE
+            elif event.key == pygame.K_5:
+                curColor = BLACK
+
         # Mouse click
         elif event.type == pygame.MOUSEBUTTONUP:
             # Use floor division to get the indices of the tile.
@@ -43,10 +59,7 @@ def ProcessInput():
 
             no_list = [[14,15,16],[10,11,12]]
             if x not in no_list[0] or y not in no_list[1]: 
-                if event.button == 1: # Left mouse button 
-                    tilemap.tilemap[y][x] = RED
-                if event.button == 3: # Right mouse button 
-                    tilemap.tilemap[y][x] = BLUE 
+                tilemap.tilemap[y][x] = curColor
    
     # Checking key pressed
     keys = pygame.key.get_pressed() 
