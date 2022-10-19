@@ -24,13 +24,29 @@ white_surface = pygame.Surface((32,32))
 white_surface.fill(constants.WHITE_COLOR)
 black_surface = pygame.Surface((32,32))
 black_surface.fill(constants.BLACK_COLOR)
+player_blue_surface = pygame.Surface((32,32)) 
+player_blue_surface.blit(pygame.image.load("src\\art\\assets\\Blue\\Bodies\\body_tracks_32x32.png"), (0,0))
+player_camo_surface = pygame.Surface((32,32)) 
+player_camo_surface.blit(pygame.image.load("src\\art\\assets\\Camo\\Bodies\\body_tracks_32x32.png"), (0,0))
+player_desert_surface = pygame.Surface((32,32)) 
+player_desert_surface.blit(pygame.image.load("src\\art\\assets\\Desert\\Bodies\\body_tracks_32x32.png"), (0,0))
+player_purple_surface = pygame.Surface((32,32)) 
+player_purple_surface.blit(pygame.image.load("src\\art\\assets\\Purple\\Bodies\\body_tracks_32x32.png"), (0,0))
+player_red_surface = pygame.Surface((32,32)) 
+player_red_surface.blit(pygame.image.load("src\\art\\assets\\Red\\Bodies\\body_tracks_32x32.png"), (0,0))
+
 
 textures = {
     BLUE : blue_surface,
     RED : red_surface,
     GREEN : green_surface,
     WHITE : white_surface,
-    BLACK : black_surface
+    BLACK : black_surface,
+    PLAYER_BLUE : player_blue_surface,
+    PLAYER_CAMO : player_camo_surface,
+    PLAYER_DESERT : player_desert_surface,
+    PLAYER_PURPLE : player_purple_surface,
+    PLAYER_RED : player_red_surface
 }
 
 # Full default tilemap 

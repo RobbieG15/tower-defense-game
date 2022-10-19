@@ -50,6 +50,16 @@ def ProcessInput():
                 curColor = WHITE
             elif event.key == pygame.K_5:
                 curColor = BLACK
+            elif event.key == pygame.K_6:
+                curColor = PLAYER_BLUE
+            elif event.key == pygame.K_7:
+                curColor = PLAYER_CAMO
+            elif event.key == pygame.K_8:
+                curColor = PLAYER_DESERT
+            elif event.key == pygame.K_9:
+                curColor = PLAYER_PURPLE
+            elif event.key == pygame.K_0:
+                curColor = PLAYER_RED
 
         # Mouse click
         elif event.type == pygame.MOUSEBUTTONUP:
